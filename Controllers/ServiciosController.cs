@@ -8,7 +8,12 @@ namespace EncuentraAtuMascota.Controllers
 {
     public class ServiciosController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Adoptar()
+        {
+            return View();
+        }
+
+        public IActionResult MiMascota()
         {
             return View();
         }

@@ -15,14 +15,17 @@ namespace EncuentraAtuMascota.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult Registrar()
         {
-            ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult IniciarSesion()
+        {
+            return View();
+        }
+
+        public IActionResult Contactanos()
         {
             ViewData["Message"] = "Your contact page.";
 
