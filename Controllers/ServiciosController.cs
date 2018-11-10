@@ -13,7 +13,7 @@ namespace EncuentraAtuMascota.Controllers
             return View();
         }
 
-        public IActionResult MiMascota()
+        public IActionResult RegistroMiMascota()
         {
             return View();
         }
