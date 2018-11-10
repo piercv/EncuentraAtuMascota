@@ -18,13 +18,12 @@
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
+                    @*<span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>*@
                 </button>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">EncuentraAtuMascota</a>
             </div>
@@ -32,10 +31,15 @@
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Inicio</a></li>
                     <li><a asp-area="" asp-controller="Servicios" asp-action="Adoptar">Adoptar</a></li>
-                    <li><a asp-area="" asp-controller="Servicios" asp-action="MiMascota">MiMascota</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contactanos">Contactanos</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="IniciarSesion">Iniciar Sesión</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Registrar">Registrar</a></li>
+                    <li><a asp-area="" asp-controller="Servicios" asp-action="MiMascota">Mi Mascota</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contactanos">Contáctanos</a></li>
+                    <li><a asp-area="" asp-controller="Usuarios" asp-action="Index">Registrar</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a asp-area="" asp-controller="Home" asp-action="IniciarSesion">
+                        <span class="glyphicon glyphicon-user"></span> Iniciar Sesión</a></li>
+                    <li><a href="#">
+                        <span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
                 </ul>
             </div>
         </div>
