@@ -3,30 +3,28 @@
     ViewData["Title"] = "IniciarSesion";
 }
 
-<h2>IniciarSesion</h2>
+<h2>Iniciar Sesion</h2>
 
 <div class="row">
     <div class="col-md-6">
 
-        <form action="" method="post">
+        <form action="IniciarSesion" method="post">
 
             <div class="form-group">
-                <label>Correo:</label>                
-               
+                <label id="l_NombreContacto" class="control-label">Nombre del Contacto:</label>
+                <input id="NombreContacto" class="form-control" />
+
             </div>
 
             <div class="form-group">
-                <label>Contraseña:</label>
-               
-            </div>
+                <label id="l_clave" class="control-label">Contraseña:</label>
+                <input id="clave" class="form-control" />
 
-            
+            </div>
 
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Iniciar sesión</button>
             </div>
-
-            <div class="g-recaptcha" data-sitekey="6Ld2KXEUAAAAANFMsk6hcIoZhmDHA618oAVPUxxV"></div>
 
         </form>
 
