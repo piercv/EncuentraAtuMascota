@@ -1,0 +1,51 @@
+﻿@model EncuentraAtuMascota.Models.Adoptar
+
+@{
+    ViewData["Title"] = "Eliminar S.Adopción";
+}
+
+<h2>Eliminar Solicitudes de Adopción</h2><hr />
+
+<h5>Esta seguro que desea eliminar la Solicitud de Adopción?<br /></h5>
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreAdoptante)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NombreAdoptante)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Comentarios)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Comentarios)
+        </dd>
+    </dl>
+
+     <form asp-controller="Adoptar" asp-action="Eliminar">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-primary" />
+        <a asp-controller="Adoptar" asp-action="Administrar" class="btn btn-default active">Cancelar</a>
+    </form>
+
+</div>

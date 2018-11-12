@@ -15,11 +15,6 @@ namespace EncuentraAtuMascota.Controllers
             return View();
         }
 
-        public IActionResult Registrar()
-        {
-            return View();
-        }
-
         public IActionResult IniciarSesion()
         {
             return View();
@@ -29,11 +24,6 @@ namespace EncuentraAtuMascota.Controllers
         {
             ViewData["Message"] = "Your contact page.";
 
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
             return View();
         }
 

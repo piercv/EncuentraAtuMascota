@@ -1,0 +1,47 @@
+﻿@model EncuentraAtuMascota.Models.Adoptar
+
+@{
+    ViewData["Title"] = "Información de Adopción";
+}
+
+<h2>Modificar Solicitud de Adopción</h2>hr/>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreAdoptante)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NombreAdoptante)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Comentarios)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Comentarios)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Modificar" class="btn btn-primary" asp-route-id="@Model.Id">Ir a Modificar</a>
+    <a asp-action="Administrar" class="btn btn-default active">Regresar</a>
+</div>

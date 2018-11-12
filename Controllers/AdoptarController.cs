@@ -10,22 +10,22 @@ using EncuentraAtuMascota.Models;
 
 namespace EncuentraAtuMascota.Controllers
 {
-    public class UsuariosController : Controller
+    public class AdoptarController : Controller
     {
         private readonly EncuentraAtuMascotaContext _context;
 
-        public UsuariosController(EncuentraAtuMascotaContext context)
+        public AdoptarController(EncuentraAtuMascotaContext context)
         {
             _context = context;
         }
 
-        // Obtener Lista de Usuarios
+        // Obtener Lista de Solicitudes de Adopción
         public async Task<IActionResult> Administrar()
         {
-            return View(await _context.Usuarios.ToListAsync());
+            return View(await _context.Adoptar.ToListAsync());
         }
 
-        // Muestra Información del usuario
+        // Muestra información Solicitudes de adopción (adoptantes)
         public async Task<IActionResult> Detalle(int? id)
         {
             if (id == null)
@@ -33,58 +33,36 @@ namespace EncuentraAtuMascota.Controllers
                 return NotFound();
             }
 
-            var usuarios = await _context.Usuarios
+            var adoptar = await _context.Adoptar
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (usuarios == null)
+            if (adoptar == null)
             {
                 return NotFound();
             }
 
-            return View(usuarios);
+            return View(adoptar);
         }
 
-        // Crear nuevo usuario
+        // Crear nueva solicitud de Adopción
         public IActionResult Crear()
         {
             return View();
         }
 
-        //Graba nuevo usuario
+        //Graba nueva solicitud de Adopción
         [HttpPost]
-        public async Task<IActionResult> Crear([Bind("Id,Nombres,Apellidos,Sexo,Email,Telefono,FechaNacimiento,Direccion,Usuario,Clave")] Usuarios usuarios)
+        public async Task<IActionResult> Crear([Bind("Id,NombreAdoptante,Telefono,Email,Direccion,Comentarios,FotoMascota")] Adoptar adoptar)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(usuarios);
+                _context.Add(adoptar);
                 await _context.SaveChangesAsync();
-
-                TempData["usuarios"] = usuarios.Usuario;
-
-                //return RedirectToAction(nameof(UsuarioConfirmacion));
-                //return RedirectToAction("Index", "Home");
-                return RedirectToAction("UsuarioConfirmacion");
+                return RedirectToAction(nameof(Administrar));
             }
-            return View(usuarios);
+            return View(adoptar);
         }
 
-        // Confirmar creación de Nuevo usuario
-        public IActionResult UsuarioConfirmacion()
-        {
-            //Usuarios usuario = TempData["usuarios"] as Usuarios;
-
-            //if (usuario == null)
-            //{
-            //    return RedirectToAction("Crear");
-            //}
-
-            //// Llevar el objeto "contacto" hasta la vista
-            //ViewData["usuarios"] = usuario;
-
-            return View();
-
-        }
-
-        //Modifica información del usuario
+        // Modifica información de solicitud de Adopción
         public async Task<IActionResult> Modificar(int? id)
         {
             if (id == null)
@@ -92,19 +70,19 @@ namespace EncuentraAtuMascota.Controllers
                 return NotFound();
             }
 
-            var usuarios = await _context.Usuarios.FindAsync(id);
-            if (usuarios == null)
+            var adoptar = await _context.Adoptar.FindAsync(id);
+            if (adoptar == null)
             {
                 return NotFound();
             }
-            return View(usuarios);
+            return View(adoptar);
         }
 
-        //Graba datos modificados del usuario
+        // Graba datos modificados de la solicitud de adopción
         [HttpPost]
-        public async Task<IActionResult> Modificar(int id, [Bind("Id,Nombres,Apellidos,Sexo,Email,Telefono,FechaNacimiento,Direccion,Usuario,Clave")] Usuarios usuarios)
+        public async Task<IActionResult> Modificar(int id, [Bind("Id,NombreAdoptante,Telefono,Email,Direccion,Comentarios,FotoMascota")] Adoptar adoptar)
         {
-            if (id != usuarios.Id)
+            if (id != adoptar.Id)
             {
                 return NotFound();
             }
@@ -113,12 +91,12 @@ namespace EncuentraAtuMascota.Controllers
             {
                 try
                 {
-                    _context.Update(usuarios);
+                    _context.Update(adoptar);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UsuariosExists(usuarios.Id))
+                    if (!AdoptarExists(adoptar.Id))
                     {
                         return NotFound();
                     }
@@ -129,40 +107,39 @@ namespace EncuentraAtuMascota.Controllers
                 }
                 return RedirectToAction(nameof(Administrar));
             }
-            return View(usuarios);
+            return View(adoptar);
         }
 
-        // Elimina usuarios
+        // Eliminar solcitudes de adopción
         public async Task<IActionResult> Eliminar(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
-            var usuarios = await _context.Usuarios
+            var adoptar = await _context.Adoptar
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (usuarios == null)
+            if (adoptar == null)
             {
                 return NotFound();
             }
-
-            return View(usuarios);
+            return View(adoptar);
         }
 
-        //Elimina usuario de la BD
+        // Eliminar solicitud de adopción de la BD
         [HttpPost, ActionName("Eliminar")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var usuarios = await _context.Usuarios.FindAsync(id);
-            _context.Usuarios.Remove(usuarios);
+            var adoptar = await _context.Adoptar.FindAsync(id);
+            _context.Adoptar.Remove(adoptar);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Administrar));
         }
 
-        private bool UsuariosExists(int id)
+        // Busca el Id de la Mascota que debe usar
+        private bool AdoptarExists(int id)
         {
-            return _context.Usuarios.Any(e => e.Id == id);
+            return _context.Adoptar.Any(e => e.Id == id);
         }
     }
 }

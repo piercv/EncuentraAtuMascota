@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<EncuentraAtuMascota.Models.Usuarios>
 
 @{
-    ViewData["Title"] = "Administrar";
+    ViewData["Title"] = "Administrar Usuarios";
 }
 
-<h2>Administrar</h2>
+<h2>Administrar Usuarios</h2>
 
 <p>
-    <a asp-action="Crear">Nuevo Usuario</a>
+    <a asp-action="Crear">Nuevo</a>
 </p>
 <table class="table">
     <thead>
@@ -73,9 +73,9 @@
                 @Html.DisplayFor(modelItem => item.Clave)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Modificar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalle</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                <a asp-action="Modificar" asp-route-id="@item.Id">Modificar</a> |
+                <a asp-action="Detalle" asp-route-id="@item.Id">Detalle</a> |
+                <a asp-action="Eliminar" asp-route-id="@item.Id">Eliminar</a>
             </td>
         </tr>
 }

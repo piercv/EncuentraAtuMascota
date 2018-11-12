@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EncuentraAtuMascota.Migrations
 {
     [DbContext(typeof(EncuentraAtuMascotaContext))]
-    [Migration("20181110220048_Inicial")]
+    [Migration("20181112042351_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,37 +19,68 @@ namespace EncuentraAtuMascota.Migrations
                 .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("EncuentraAtuMascota.Models.Adoptar", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Comentarios")
+                        .IsRequired()
+                        .HasMaxLength(200);
+
+                    b.Property<string>("Direccion")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<string>("NombreAdoptante")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<string>("Telefono")
+                        .IsRequired()
+                        .HasMaxLength(30);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Adoptar");
+                });
+
             modelBuilder.Entity("EncuentraAtuMascota.Models.MiMascota", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Descripción")
+                    b.Property<int?>("AdoptarId");
+
+                    b.Property<string>("Descripcion")
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<string>("Edad")
-                        .IsRequired()
-                        .HasMaxLength(4);
+                    b.Property<int>("Edad");
 
-                    b.Property<byte[]>("FotoMascota")
-                        .IsRequired();
+                    b.Property<string>("FotoMascota")
+                        .IsRequired()
+                        .HasMaxLength(100);
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasMaxLength(50);
+                        .HasMaxLength(100);
 
                     b.Property<string>("NombreDueno")
                         .IsRequired()
-                        .HasMaxLength(50);
+                        .HasMaxLength(100);
 
                     b.Property<string>("Raza")
                         .IsRequired()
-                        .HasMaxLength(10);
+                        .HasMaxLength(50);
 
                     b.Property<string>("Sexo")
                         .IsRequired()
-                        .HasMaxLength(8);
+                        .HasMaxLength(20);
 
                     b.Property<string>("Tamaño")
                         .IsRequired()
@@ -60,6 +91,8 @@ namespace EncuentraAtuMascota.Migrations
                         .HasMaxLength(30);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AdoptarId");
 
                     b.ToTable("MiMascota");
                 });
@@ -104,6 +137,13 @@ namespace EncuentraAtuMascota.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("EncuentraAtuMascota.Models.MiMascota", b =>
+                {
+                    b.HasOne("EncuentraAtuMascota.Models.Adoptar")
+                        .WithMany("MiMascota")
+                        .HasForeignKey("AdoptarId");
                 });
 #pragma warning restore 612, 618
         }

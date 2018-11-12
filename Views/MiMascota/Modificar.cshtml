@@ -1,18 +1,16 @@
 ﻿@model EncuentraAtuMascota.Models.MiMascota
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Modificar";
 }
 
-<h2>Edit</h2>
+<h2>Modificar información de Mascota</h2><hr />
 
-<h4>MiMascota</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+<form asp-action="Modificar">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+    <div class="row">
+        <div class="col-md-4">
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
                 <input asp-for="Nombre" class="form-control" />
@@ -38,34 +36,38 @@
                 <input asp-for="Raza" class="form-control" />
                 <span asp-validation-for="Raza" class="text-danger"></span>
             </div>
+        </div>
+        <div class="col-md-4">
             <div class="form-group">
-                <label asp-for="Descripción" class="control-label"></label>
-                <input asp-for="Descripción" class="form-control" />
-                <span asp-validation-for="Descripción" class="text-danger"></span>
+                <label asp-for="Descripcion" class="control-label">Descripción</label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NombreDueno" class="control-label"></label>
+                <label asp-for="NombreDueno" class="control-label">Nombre del Dueño</label>
                 <input asp-for="NombreDueno" class="form-control" />
                 <span asp-validation-for="NombreDueno" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Telefono" class="control-label"></label>
+                <label asp-for="Telefono" class="control-label">Teléfono</label>
                 <input asp-for="Telefono" class="form-control" />
                 <span asp-validation-for="Telefono" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FotoMascota" class="control-label"></label>
+                <label asp-for="FotoMascota" class="control-label">URL foto de la Mascota</label>
                 <input asp-for="FotoMascota" class="form-control" />
                 <span asp-validation-for="FotoMascota" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="submit" value="Modificar" class="btn btn-primary" />
+                <a asp-action="Administrar" class="btn btn-default active">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</form>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 

@@ -3,8 +3,8 @@
 @{ ViewData["Title"] = "Registrar Usuarios"; }
 
 
-<h2>Registrar Usuarios</h2><hr/>
-<form asp-action="Create">
+<h2>Registrar Usuarios</h2><hr />
+<form asp-action="Crear">
     <div class="row">
         <div class="col-md-4">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -56,16 +56,13 @@
                 <span asp-validation-for="Clave" class="text-danger"></span>
             </div>
         </div>
-        <div class="col-md-2">
-            <h6><a asp-action="Index">Back to List</a></h6>
-        </div>
     </div>
 
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
                 <input type="submit" value="Crear Usuario" class="btn btn-primary active" />
-                <input type="reset" value="Cancelar" class="btn btn-default" />
+                <a asp-controller="Home" asp-action="Index" class="btn btn-default">Cancelar</a>
             </div>
         </div>
     </div>

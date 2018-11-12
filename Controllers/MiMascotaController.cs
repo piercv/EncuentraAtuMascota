@@ -9,23 +9,23 @@ using EncuentraAtuMascota.Models;
 
 namespace EncuentraAtuMascota.Controllers
 {
-    public class MiMascotasController : Controller
+    public class MiMascotaController : Controller
     {
         private readonly EncuentraAtuMascotaContext _context;
 
-        public MiMascotasController(EncuentraAtuMascotaContext context)
+        public MiMascotaController(EncuentraAtuMascotaContext context)
         {
             _context = context;
         }
 
-        // GET: MiMascotas
-        public async Task<IActionResult> Index()
+        //Obtener Mis Mascotas - Lista
+        public async Task<IActionResult> Administrar()
         {
             return View(await _context.MiMascota.ToListAsync());
         }
 
-        // GET: MiMascotas/Details/5
-        public async Task<IActionResult> Details(int? id)
+        //Muestra información de la Mascota
+        public async Task<IActionResult> Detalle(int? id)
         {
             if (id == null)
             {
@@ -42,30 +42,28 @@ namespace EncuentraAtuMascota.Controllers
             return View(miMascota);
         }
 
-        // GET: MiMascotas/Create
-        public IActionResult Create()
+        //Creara nueva Mascota
+        public IActionResult Crear()
         {
             return View();
         }
 
-        // POST: MiMascotas/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //Graba información de nueva mascota en la BD
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Edad,Tamaño,Sexo,Raza,Descripción,NombreDueno,Telefono,FotoMascota")] MiMascota miMascota)
+
+        public async Task<IActionResult> Crear([Bind("Id,Nombre,Edad,Tamaño,Sexo,Raza,Descripcion,NombreDueno,Telefono,FotoMascota")] MiMascota miMascota)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(miMascota);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Administrar));
             }
             return View(miMascota);
         }
 
-        // GET: MiMascotas/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        //Modificar información de la Mascota
+        public async Task<IActionResult> Modificar(int? id)
         {
             if (id == null)
             {
@@ -80,12 +78,9 @@ namespace EncuentraAtuMascota.Controllers
             return View(miMascota);
         }
 
-        // POST: MiMascotas/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //Graba datos modificados de la Mascota
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Edad,Tamaño,Sexo,Raza,Descripción,NombreDueno,Telefono,FotoMascota")] MiMascota miMascota)
+        public async Task<IActionResult> Modificar(int id, [Bind("Id,Nombre,Edad,Tamaño,Sexo,Raza,Descripcion,NombreDueno,Telefono,FotoMascota")] MiMascota miMascota)
         {
             if (id != miMascota.Id)
             {
@@ -110,13 +105,13 @@ namespace EncuentraAtuMascota.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Administrar));
             }
             return View(miMascota);
         }
 
-        // GET: MiMascotas/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // Eliminar Mascotas
+        public async Task<IActionResult> Eliminar(int? id)
         {
             if (id == null)
             {
@@ -133,15 +128,15 @@ namespace EncuentraAtuMascota.Controllers
             return View(miMascota);
         }
 
-        // POST: MiMascotas/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        ///Elimina Mascota de la BD
+        [HttpPost, ActionName("Eliminar")]
+
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var miMascota = await _context.MiMascota.FindAsync(id);
             _context.MiMascota.Remove(miMascota);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Administrar));
         }
 
         private bool MiMascotaExists(int id)

@@ -1,14 +1,13 @@
 ﻿@model EncuentraAtuMascota.Models.MiMascota
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Eliminar";
 }
+<h2>Eliminar Mascotas</h2><hr />
 
-<h2>Details</h2>
+<h5>Esta seguro que desea eliminar la Mascota?<br /></h5>
 
 <div>
-    <h4>MiMascota</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Nombre)
@@ -41,13 +40,15 @@
             @Html.DisplayFor(model => model.Raza)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Descripción)
+            Descripción
+            @*@Html.DisplayNameFor(model => model.Descripcion)*@
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Descripción)
+            @Html.DisplayFor(model => model.Descripcion)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.NombreDueno)
+            Nombre del Dueño
+            @*@Html.DisplayNameFor(model => model.NombreDueno)*@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.NombreDueno)
@@ -59,14 +60,18 @@
             @Html.DisplayFor(model => model.Telefono)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.FotoMascota)
+            Foto de la Mascota
+            @*@Html.DisplayNameFor(model => model.FotoMascota)*@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.FotoMascota)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+    <form asp-controller="MiMascota" asp-action="Eliminar">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-primary" />
+        <a asp-controller="MiMascota" asp-action="Administrar" class="btn btn-default active">Cancelar</a>
+    </form>
+
 </div>

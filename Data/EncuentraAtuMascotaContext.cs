@@ -13,5 +13,8 @@ namespace EncuentraAtuMascota.Models
         public DbSet<EncuentraAtuMascota.Models.Usuarios> Usuarios { get; set; }
 
         public DbSet<EncuentraAtuMascota.Models.MiMascota> MiMascota { get; set; }
+
+        public DbSet<EncuentraAtuMascota.Models.Adoptar> Adoptar { get; set; }
+
     }
 }

@@ -1,14 +1,12 @@
 ﻿@model EncuentraAtuMascota.Models.Usuarios
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalle Usuarios";
 }
 
-<h2>Details</h2>
+<h2>Información del Usuario</h2><hr/>
 
 <div>
-    <h4>Usuarios</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Nombres)
@@ -41,7 +39,8 @@
             @Html.DisplayFor(model => model.Telefono)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.FechaNacimiento)
+            Fecha de Nacimiento
+            @*@Html.DisplayNameFor(model => model.FechaNacimiento)*@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.FechaNacimiento)
@@ -67,6 +66,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Modificar" class="btn btn-primary" asp-route-id="@Model.Id">Ir a Modificar</a>
+    <a asp-action="Administrar" class="btn btn-default active">Regresar</a>
 </div>

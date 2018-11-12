@@ -5,13 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20181110012044_Crea-BD.cs" />
-    <Compile Remove="Migrations\20181110012044_Crea-BD.Designer.cs" />
+    <Compile Remove="Migrations\20181112042237_Inicial.cs" />
+    <Compile Remove="Migrations\20181112042237_Inicial.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\images\banner2.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\images\banner5.jpg" />
-    <None Include="wwwroot\images\banner6.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +26,18 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.5" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\images\banner1.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\images\banner3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\images\banner5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
